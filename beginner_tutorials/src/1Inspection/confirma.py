@@ -3,24 +3,24 @@ import rospy
 import pyttsx
 from std_msgs.msg import String
 from pyfirmata import Arduino, util
-board = Arduino('/dev/ttyACM0')
+#board = Arduino('/dev/ttyACM0')
 def callback(data):
 	rospy.loginfo("I heard:  %s", data.data)
 	engine = pyttsx.init()
 	engine.runAndWait()
 	rec = str(data.data)
 	if rec == 'forward' or rec == 'four':
-		engine.say(str(data.data))
+		engine.say("start walking")
 		engine.runAndWait()
-		board.digital[7].write(1)
-		board.digital[8].write(0)
+		#board.digital[7].write(1)
+		#board.digital[8].write(0)
 	elif rec == 'stop' or rec == 'wait':
-		engine.say(str(data.data))
+		engine.say("stopping")
 		engine.runAndWait()
-		board.digital[7].write(0)
-		board.digital[8].write(0)
+		#board.digital[7].write(0)
+		#board.digital[8].write(0)
 	else:
-		engine.say(str(data.data))
+		engine.say("command unrecognized")
 		engine.runAndWait()
 def listener():
 
