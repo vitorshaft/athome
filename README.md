@@ -1,2 +1,2 @@
 # athome
-Se quiser, se n quiser tanto faz
+Robô Capek para Competição Latino-Americana de Robótica - LARC
